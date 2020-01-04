@@ -1,0 +1,5 @@
+pandas==0.25.3
+google-api-python-client==1.7.11
+google-auth-httplib2==0.0.3
+google-auth-oauthlib==0.4.1
+Jinja2==2.10.3
