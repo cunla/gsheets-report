@@ -17,8 +17,14 @@
 <body>
 <div class="box_grey">
     <details>
-        <summary>Click the summary to expand details.</summary>
-        <p>The very exciting details!</p>
+        <summary>
+            This is a graph of your weight in the last {{months}} months based on the entries in your google spreadsheets
+        </summary>
+        {% if difference > 0 %}
+        <p>You have lost {{'%0.1f'|format(difference)}}kg</p>
+        {% else %}
+        <p>You have gained {{'%0.1f'|format(-difference)}}kg</p>
+        {% endif %}
         <img src="cid:0"/>
     </details>
 </div>

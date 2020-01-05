@@ -21,12 +21,16 @@ def send_spreadsheet_report(to: Tuple[str]):
     """
     io_str = read_spreadsheet_as_csv(settings.SPREADSHEET_ID, settings.SPREADSHEET_RANGE)
     df = generate_report_from_csv_str(io_str.getvalue())
+    diff = df.iloc[-1] - df.iloc[0]
     dataframe_to_image(df, TMP_FILENAME)
 
     template_loader = jinja2.FileSystemLoader(searchpath="./")
     template_env = jinja2.Environment(loader=template_loader)
     html_template = template_env.get_template(settings.REPORT_TEMPLATE)
-    html = html_template.render()
+    html = html_template.render(
+        months=settings.NUMBER_OF_MONTHS,
+        difference=diff['Weight']
+    )
 
     email_sender = EmailSender(settings.SMTP_SERVER, settings.SMTP_SERVER_PORT, settings.SMTP_SERVER_USER,
                                settings.SMTP_SERVER_PASSWORD)
