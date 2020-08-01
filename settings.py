@@ -16,11 +16,11 @@ SMTP_SERVER = "smtp.gmail.com"
 SMTP_SERVER_PORT = 465
 
 # Report sender name and email address
-REPORT_SENDER = ("full name", "a@gmail.com")
+REPORT_SENDER = ("Daniel Moran", "style.daniel@gmail.com")
 # Report email subject
 REPORT_SUBJECT = 'Report'
 # Report recipient name and email address
-REPORT_RECIPIENT = ("b", "style.daniel@gmail.com")
+REPORT_RECIPIENT = ("Daniel Moran", "style.daniel@gmail.com")
 
 # Report template
 REPORT_TEMPLATE = 'templates/report.html'
