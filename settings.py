@@ -5,7 +5,7 @@
 from secrets import *
 
 # Google spreadsheet data
-SPREADSHEET_ID = '1jMlzxtYrmd1DuTHCd2vxE2u_C71-62Lz6f-me7DSbmA'
+SPREADSHEET_ID = '1fbFXa0zeedpnF0M0gfoZTjgzORU9db8Vj9D6LmGt2ZM'
 SPREADSHEET_RANGE = 'Weight!A:C'
 
 # Number of months to include in the report
