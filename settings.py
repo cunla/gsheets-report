@@ -23,4 +23,4 @@ REPORT_SUBJECT = 'Report'
 REPORT_RECIPIENT = ("Daniel Moran", "style.daniel@gmail.com")
 
 # Report template
-REPORT_TEMPLATE = 'templates/report.html'
+REPORT_TEMPLATE = 'templates/weight_report.html'

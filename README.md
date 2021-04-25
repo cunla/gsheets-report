@@ -58,7 +58,7 @@ REPORT_SUBJECT = 'Report'
 REPORT_RECIPIENT = ("b", "b@gmail.com")
 
 # Report template
-REPORT_TEMPLATE = 'templates/report.html'
+REPORT_TEMPLATE = 'templates/weight_report.html'
 ```
 
 Afterwards, run 
