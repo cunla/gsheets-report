@@ -18,7 +18,7 @@ logger.addHandler(handler)
 
 
 def download_xls_file(filename: str) -> None:
-    url = 'http://www.boi.org.il/he/DataAndStatistics/Lists/BoiTablesAndGraphs/shcd08_h.xls'
+    url = 'https://www.boi.org.il/he/DataAndStatistics/Lists/BoiTablesAndGraphs/shcd08_h.xls'
     r = requests.get(url)
     logger.info(f'Writing response to file {filename}')
     with open(filename, 'wb') as f:
