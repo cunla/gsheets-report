@@ -1,8 +1,12 @@
-# Import from secrets.py
-# SMTP_SERVER_USER = "xxx"
-# SMTP_SERVER_PASSWORD = "xxx"
+import os
 
-from secrets import *
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env.
+
+SMTP_SERVER_USER = os.getenv('SMTP_SERVER_USER', None)
+SMTP_SERVER_PASSWORD = os.getenv('SMTP_SERVER_PASSWORD', None)
+
 
 # Google spreadsheet data
 SPREADSHEET_ID = '1jMlzxtYrmd1DuTHCd2vxE2u_C71-62Lz6f-me7DSbmA'
