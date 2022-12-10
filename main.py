@@ -13,17 +13,7 @@ TEMP_DIR = tempfile.gettempdir()
 TMP_FILENAME = os.path.join(TEMP_DIR, 'graph.png')
 
 
-def send_spreadsheet_report(to: Tuple[str]):
-    """
-    Read data from google spreadsheet, generate a graph from data and send it as an email
-    :param to   Tuple of (receiver name, receiver email)
-    :return:
-    """
-    io_str = read_spreadsheet_as_csv(settings.SPREADSHEET_ID, settings.SPREADSHEET_RANGE)
-    df = generate_report_from_csv_str(io_str.getvalue())
-    diff = df.iloc[-1] - df.iloc[0]
-    dataframe_to_image(df, TMP_FILENAME)
-
+def _send_dataframe_report(diff, to: Tuple[str]):
     template_loader = jinja2.FileSystemLoader(searchpath="./")
     template_env = jinja2.Environment(loader=template_loader)
     html_template = template_env.get_template(settings.REPORT_TEMPLATE)
@@ -40,8 +30,21 @@ def send_spreadsheet_report(to: Tuple[str]):
                             html,
                             attachments=[TMP_FILENAME])
 
+
+def send_spreadsheet_report(spreadsheet_id: str, range: str, to: Tuple[str]):
+    """
+    Read data from google spreadsheet, generate a graph from data and send it as an email
+    :param to   Tuple of (receiver name, receiver email)
+    :return:
+    """
+    io_str = read_spreadsheet_as_csv(spreadsheet_id, range)
+    df = generate_report_from_csv_str(io_str.getvalue())
+    diff = df.iloc[-1] - df.iloc[0]
+    dataframe_to_image(df, TMP_FILENAME)
+    _send_dataframe_report(diff, to)
+
     os.remove(TMP_FILENAME)
 
 
 if __name__ == '__main__':
-    send_spreadsheet_report(settings.REPORT_RECIPIENT)
+    send_spreadsheet_report(settings.SPREADSHEET_ID, settings.SPREADSHEET_RANGE, settings.REPORT_RECIPIENT)
