@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        python-version: ['3.10']
+        python-version: ['3.11']
     env:
       SMTP_SERVER_PASSWORD: ${{ secrets.SMTP_SERVER_PASSWORD }}
       SMTP_SERVER_USER: ${{ secrets.SMTP_SERVER_USER }}
